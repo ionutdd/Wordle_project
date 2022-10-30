@@ -35,6 +35,33 @@ for k in char:
 		p[i]=0
 	print(end="\n")
 
-for cuv in lines:
-	if cuv[1]=="A" and cuv[3]=="E" and cuv[4]=="I" and cuv[0]=="R":
-		print(cuv) #s-a gasit cuvantul RATEI, ca fiind cel mai optim!
+#gaseste primul cuv optim:
+#for cuv in lines:
+	#if cuv[1]=="A" and cuv[3]=="E" and cuv[4]=="I" and cuv[0]=="R":
+		#print(cuv)
+#deci,
+cuv="RATEI"
+
+#alege un cuv random + verificare dintre cuv ales si chosen
+valid = [0] * 5
+
+#seed
+random.seed(5)
+
+#vectorul valid e astfel: 2 e "green" 1 e "yellow" 0 e "No luck!"
+#chosen e cuvantul ales de calculator
+pozz=random.randrange(0,len(lines))
+chosen=lines[pozz]
+
+for i in range(5):
+	if cuv[i]==chosen[i]:
+		valid[i]=2
+	else:
+		for k in range(0,5):
+			if cuv[i]==chosen[k]:
+				valid[i]=1
+				break
+		else:
+			valid[i]=0
+print(chosen)
+print(valid)
