@@ -8,5 +8,5 @@ for cuvant in lines:
     for chr in cuvant:
         Alphabet[chr]+=1
 
-print(Alphabet)
-# print(lines)
+Alphabet2 = dict(sorted(Alphabet.items(), key=lambda item: item[1]))
+print(Alphabet2)
