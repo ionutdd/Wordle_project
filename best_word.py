@@ -84,3 +84,96 @@ for cuv in lines:
 for cuv in lines:
 	if cuv.find("W")!=-1:
 		print(cuv)
+
+		
+		
+		
+
+#Niste statistici: s e suma din vectorul valid pt fiecare cuvant "chosen", s2 ar trebui sa fie doar pentru cele care au litere care se repeta si nr numar de cuvinte care se repeta
+s=0
+nr=0
+s2=0
+for chosen in lines:
+	valid=[0]*5
+	cuv="QUICK"
+	for i in range(5):
+		if cuv[i]==chosen[i]:
+			valid[i]=2
+		else:
+			for k in range(0,5):
+				if cuv[i]==chosen[k]:
+					valid[k]=1
+					break
+
+
+	cuv="WALON"
+	for i in range(5):
+		if cuv[i]==chosen[i]:
+			valid[i]=2
+		else:
+			for k in range(0,5):
+				if cuv[i]==chosen[k] and valid[k]==0:
+					valid[k]=1
+					break
+
+	cuv="JIDOV"
+	for i in range(5):
+		if cuv[i]==chosen[i]:
+			valid[i]=2
+		else:
+			for k in range(0,5):
+				if cuv[i]==chosen[k] and valid[k]==0:
+					valid[k]=1
+					break
+
+	cuv="HARSE"
+	for i in range(5):
+		if cuv[i]==chosen[i]:
+			valid[i]=2
+		else:
+			for k in range(0,5):
+				if cuv[i]==chosen[k] and valid[k]==0:
+					valid[k]=1
+					break
+
+	cuv="FIXEZ"
+	for i in range(5):
+		if cuv[i]==chosen[i]:
+			valid[i]=2
+		else:
+			for k in range(0,5):
+				if cuv[i]==chosen[k] and valid[k]==0:
+					valid[k]=1
+					break
+
+	cuv="IMPUT"
+	for i in range(5):
+		if cuv[i]==chosen[i]:
+			valid[i]=2
+		else:
+			for k in range(0,5):
+				if cuv[i]==chosen[k] and valid[k]==0:
+					valid[k]=1
+					break
+	cuv="RUGBY"
+	for i in range(5):
+		if cuv[i]==chosen[i]:
+			valid[i]=2
+		else:
+			for k in range(0,5):
+				if cuv[i]==chosen[k] and valid[k]==0:
+					valid[k]=1
+					break
+	s3=0
+	for i in range(5):
+		s+=valid[i]
+		s3+=valid[i]
+	p=0
+	if p in valid:
+		print(chosen)
+		nr+=1
+		s2+=s3
+	
+		
+print(s/11454)
+print(s2/nr)
