@@ -65,3 +65,22 @@ for i in range(5):
 			valid[i]=0
 print(chosen)
 print(valid)
+
+#Cautam cele mai mic nr de cuvinte astfel incat sa "acoperim" tot alfabetul SI sa maximizam cele mai probabile pozitii ale acestor litere
+#Fiecare "if" este pentru fiecare pozitie si cu literele care se regasesc cel mai probabil pe acea pozitie
+for cuv in lines:
+	if cuv[3]=="S" or cuv[3]=="C" or cuv[3]=="M" or cuv[3]=="P" or cuv[3]=="D" or cuv[3]=="B" or cuv[3]=="G":
+		if cuv[1]=="A" or cuv[1]=="U" or cuv[1]=="O":
+			if cuv[2]=="Z" or cuv[2]=="X":
+				if cuv[0]=="V" or cuv[0]=="F" or cuv[0]=="H" or cuv[0]=="J" or cuv[0]=="K" or cuv[0]=="W" or cuv[0]=="Q":
+					if cuv[4]=="I" or cuv[4]=="E" or cuv[4]=="T" or cuv[4]=="Y":
+						print(cuv)
+
+
+#Din pacate, nu s-au gasit cuvinte cu Q si cu W, asa ca le-am luat separat, iar Q si W se gasesc aproape exclusiv pe pozitia 0, deoarece sunt putine cuvinte care contin aceste litere
+for cuv in lines:
+	if cuv.find("Q")!=-1:
+		print(cuv)
+for cuv in lines:
+	if cuv.find("W")!=-1:
+		print(cuv)
