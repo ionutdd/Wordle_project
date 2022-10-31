@@ -270,45 +270,40 @@ for letter in letters:
 
 #lista cu cuv posibile
 
-nr=0
-possible=[]
+nr=0 #intializam o valoare pentru a calcula cate cuvinte exista posibile
+
+possible=[] #cuvintele din dictionar posibile formate cu caracterele din letters
 for word in lines:
 	ok=1
 	for i in range(len(word)-1):
-		if word[i] not in letters:
+		if word[i] not in letters: #daca caracterul nu se afla in letters
 			ok=0
-		if final[i]!="":
-			if word[i]!=final[i]:
+		if final[i]!="": 
+			if word[i]!=final[i]: #daca caracterul e deja aparut in final
 				ok=0
-	for l in letters:
-		if l not in word:
+	for l in letters:  #daca caracterul nu se afla in letters
+		if l not in word: 
 			ok=0
 	if ok==1:
-		possible.append(word.strip("\n"))
-		nr+=1
-print(possible)
-print(len(possible))
+		possible.append(word.strip("\n")) #pune cuvantele in lista fara \n
 
-
+		nr+=1 #verificam cate cuvinte sunt posibile de incercat
+		
+		
 total_possibles = len(possible)
 word=0
-while total_possibles != 0:
-	# print(word)	
-	# print(possible[word]) #pentru fiecare cuvant din numere posibile
-	for l in range(len(possible[word])): #pentru fiecare caracter din letters
-		# print(letters[possible[word[l]]])
-		for poz in letters[possible[word][l]]: #pentru fiecare pozitie posibila
-			if l == poz:
-				# print(possible[word])
+while total_possibles != 0: #treem prin toate posibilitatile
+	for l in range(len(possible[word])): #pentru fiecare caracter din cuvant
+		if  final[l]== "":
+			for poz in letters[possible[word][l]]: #pentru fiecare caracter din letters	
+				if l == poz:
+					break
+			else:
+				possible.remove(possible[word])
+				word -= 1
 				break
-		else:
-			print(possible[word])
-			possible.remove(possible[word])
-			word -= 1
-			break
 	total_possibles-=1
-	word +=1
-				
+	word +=1		
 		
 	
 # print(max)
