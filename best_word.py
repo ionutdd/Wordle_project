@@ -290,12 +290,24 @@ print(possible)
 print(len(possible))
 
 
-for word in possible:
-	for l in letters:
-		for poz in letters[l]:
-			if word in possible:
-				if word[poz] not in letters[l]:
-					possible.remove(word)
+total_possibles = len(possible)
+word=0
+while total_possibles != 0:
+	# print(word)	
+	# print(possible[word]) #pentru fiecare cuvant din numere posibile
+	for l in range(len(possible[word])): #pentru fiecare caracter din letters
+		# print(letters[possible[word[l]]])
+		for poz in letters[possible[word][l]]: #pentru fiecare pozitie posibila
+			if l == poz:
+				# print(possible[word])
+				break
+		else:
+			print(possible[word])
+			possible.remove(possible[word])
+			word -= 1
+			break
+	total_possibles-=1
+	word +=1
 				
 		
 	
