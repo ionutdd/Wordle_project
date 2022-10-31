@@ -116,3 +116,19 @@ print(max)
 
 print(f"numarul de cuvinte gresite este:{errors}")
 print(f"Cuvant pentru care nu a gasti rezolvare: {gresit}")
+
+# failed words : ['BIBIC', 'BIBIL', 'BIFID', 'BIGII', 'BINIS', 'BIRIS', 'BITII', 'CILII', 'CINIC', 'CIPIC', 'CIRII', 'CIRIP', 'CIRIS', 'CITII', 'CITIM', 'CITIT',
+#                 'CIUIN', 'CIVIC', 'CIVIL', 'CIVIT', 'DIGIT', 'DILIA', 'DILIE', 'DILII', 'DILIM', 'DILIT', 'DILIU', 'DIMIA', 'DIMIE', 'DIMII', 'DIOIC', 'DIRIG',
+#                 'DIVID', 'DIVIN', 'DIXIE', 'FILIT', 'FINII', 'FINIM', 'FINIS', 'FINIT', 'FIRII', 'FIRIZ', 'FISIC', 'FISIU', 'FITIL', 'FIZIC', 'GIMIA', 'GIMIE', 
+#                 'GIMII', 'GINII', 'GINIM', 'GINIT', 'HIOID', 'HIPIC', 'HITIT', 'JIBII', 'JILIP', 'JIPII', 'JITIA', 'JITIE', 'JITII', 'KAZOO', 'KIPII', 'LICIT', 
+#                 'LIDIC', 'LIGII', 'LIMIN', 'LINIA', 'LINIE', 'LINII', 'LINIO', 'LIPIA', 'LIPIE', 'LIPII', 'LIPIM', 'LIPIT', 'LIRIC', 'LISII', 'LITIA', 'LITIC', 
+#                 'LITIE', 'LITII', 'LITIU', 'LIVID', 'MICII', 'MICIM', 'MICIT', 'MIDIA', 'MIDIE', 'MIDII', 'MIEII', 'MIJII', 'MIJIM', 'MIJIT', 'MIMIC', 'MIMII', 
+#                 'MINIA', 'MINIE', 'MINIM', 'MINIU', 'MIRIA', 'MIRIE', 'MIRII', 'MISIA', 'MISIE', 'MISII', 'MISIL', 'MISIR', 'MISIT', 'MITIC', 'MITII', 'MITIM', 
+#                 'MITIT', 'MIXIA', 'MIXIE', 'MIXII', 'MIZID', 'NICIO', 'NIMIC', 'NISIP', 'NITII', 'NIXIS', 'OIDIA', 'OIDIE', 'OIDII', 'PICII', 'PIEII', 'PILII', 
+#                 'PILIM', 'PILIT', 'PINII', 'PIPIT', 'PISIC', 'PITIC', 'PITIG', 'PITII', 'PITIM', 'PITIS', 'PITIT', 'PIUIA', 'PIUIE', 'PIUIT', 'PIUUU', 'REMUU', 
+#                 'RICIN', 'RIDIC', 'RIFII', 'RIGID', 'RIGII', 'RITIN', 'RIZIC', 'RIZIL', 'SIBIR', 'SICII', 'SIGIL', 'SILII', 'SILIM', 'SILIT', 'SIMIT', 'SINIA', 
+#                 'SINIE', 'SINII', 'SIPII', 'SIRIC', 'SIVII', 'TIBIA', 'TIBII', 'TIFIC', 'TIMIA', 'TIMID', 'TIMIE', 'TIMII', 'TIMIN', 'TIMIR', 'TIPIA', 'TIPIC', 
+#                 'TIPIE', 'TIPII', 'TIPIM', 'TIPIS', 'TIPIT', 'TISII', 'TIUIA', 'TIUIE', 'TIUII', 'TIUIM', 'TIUIT', 'TIVIC', 'TIVII', 'TIVIL', 'TIVIM', 'TIVIT', 
+#                 'TIZIC', 'TIZII', 'UICII', 'UIMII', 'UIMIM', 'UIMIT', 'UIRII', 'UITIT', 'UIUIU', 'VACUU', 'VICIA', 'VICIE', 'VICII', 'VICIU', 'VIGIA', 'VIGIE', 
+#                 'VIGII', 'VIGIL', 'VILII', 'VILIT', 'VINIA', 'VINIE', 'VINII', 'VINIL', 'VINIU', 'VIOII', 'VIPIA', 'VIPIE', 'VIPII', 'VIRID', 'VIRIL', 'VISIN', 
+#                 'VITII', 'VITIU', 'VIZII', 'VIZIR', 'WIDIA', 'WIDII', 'XIFIA', 'XIFIE', 'XIFII', 'XILIT', 'ZIDII', 'ZIDIM', 'ZIDIT', 'ZISII']
