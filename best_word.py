@@ -210,3 +210,29 @@ for word in cuv:
 print(f"letter choices are: {letters} ") #din ce litere este format cuvantul nostru
 print(f"our first guess is : {final}") #final este cuvantul care il ghicim
 print(f"the chosen word is : {chosen}") #testing in terminal (vedem care e cuvantul random)
+
+
+
+
+
+
+
+
+#verficam cuvintele posibile ramase
+
+nr=0
+for word in lines:
+	ok=1
+	for i in range(len(word)-1):
+		if word[i] not in letters:
+			ok=0
+		if final[i]!="":
+			if word[i]!=final[i]:
+				ok=0
+	for i in range(len(letters)):
+		if letters[i] not in word:
+			ok=0
+	if ok==1:
+		print(word)
+		nr+=1
+print(nr)
