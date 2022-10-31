@@ -236,3 +236,27 @@ for word in lines:
 		print(word)
 		nr+=1
 print(nr)
+
+
+
+
+#lista cu cuv posibile
+
+nr=0
+possible=[]
+for word in lines:
+	ok=1
+	for i in range(len(word)-1):
+		if word[i] not in letters:
+			ok=0
+		if final[i]!="":
+			if word[i]!=final[i]:
+				ok=0
+	for i in range(len(letters)):
+		if letters[i] not in word:
+			ok=0
+	if ok==1:
+		possible.append(word.strip("\n"))
+		nr+=1
+print(possible)
+print(len(possible))
