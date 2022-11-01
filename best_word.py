@@ -1,4 +1,5 @@
 import random
+import sys
 # Alphabet = {"A": 0, "B": 0, "C": 0, "D":0, "E":0, "F":0, "G":0, "H":0, "I":0, "J":0, "K":0, "L":0, "M":0, "N":0, "O":0, "P":0, "Q":0, "R":0, "S":0, "T":0, "U":0, "V":0, "W":0, "X":0, "Y":0, "Z":0}
 
 # #cele mai bune 5 caractere
@@ -87,97 +88,6 @@ with open('cuvinte_wordle.txt') as f:
 # 		print(cuv)
 
 		
-		
-		
-
-# #Niste statistici: s e suma din vectorul valid pt fiecare cuvant "chosen", s2 ar trebui sa fie doar pentru cele care au litere care se repeta si nr numar de cuvinte care se repeta
-# s=0
-# nr=0
-# s2=0
-# for chosen in lines:
-# 	valid=[0]*5
-# 	cuv="QUICK"
-# 	for i in range(5):
-# 		if cuv[i]==chosen[i]:
-# 			valid[i]=2
-# 		else:
-# 			for k in range(0,5):
-# 				if cuv[i]==chosen[k]:
-# 					valid[k]=1
-# 					break
-
-
-# 	cuv="WALON"
-# 	for i in range(5):
-# 		if cuv[i]==chosen[i]:
-# 			valid[i]=2
-# 		else:
-# 			for k in range(0,5):
-# 				if cuv[i]==chosen[k] and valid[k]==0: #comment ( daca valid[1] se transforma in 1 dupa ce litera J apare in cuvant si la urmatorul cuvant se transforma in 1 pentru litera A ? )
-# 					valid[k]=1
-# 					break
-
-# 	cuv="JIDOV"
-# 	for i in range(5):
-# 		if cuv[i]==chosen[i]:
-# 			valid[i]=2
-# 		else:
-# 			for k in range(0,5):
-# 				if cuv[i]==chosen[k] and valid[k]==0:
-# 					valid[k]=1
-# 					break
-
-# 	cuv="HARSE"
-# 	for i in range(5):
-# 		if cuv[i]==chosen[i]:
-# 			valid[i]=2
-# 		else:
-# 			for k in range(0,5):
-# 				if cuv[i]==chosen[k] and valid[k]==0:
-# 					valid[k]=1
-# 					break
-
-# 	cuv="FIXEZ"
-# 	for i in range(5):
-# 		if cuv[i]==chosen[i]:
-# 			valid[i]=2
-# 		else:
-# 			for k in range(0,5):
-# 				if cuv[i]==chosen[k] and valid[k]==0:
-# 					valid[k]=1
-# 					break
-
-# 	cuv="IMPUT"
-# 	for i in range(5):
-# 		if cuv[i]==chosen[i]:
-# 			valid[i]=2
-# 		else:
-# 			for k in range(0,5):
-# 				if cuv[i]==chosen[k] and valid[k]==0:
-# 					valid[k]=1
-# 					break
-# 	cuv="RUGBY"
-# 	for i in range(5):
-# 		if cuv[i]==chosen[i]:
-# 			valid[i]=2
-# 		else:
-# 			for k in range(0,5):
-# 				if cuv[i]==chosen[k] and valid[k]==0:
-# 					valid[k]=1
-# 					break
-# 	s3=0
-# 	for i in range(5):
-# 		s+=valid[i]
-# 		s3+=valid[i]
-# 	p=0
-# 	if p in valid:
-# 		print(chosen)
-# 		nr+=1
-# 		s2+=s3
-	
-		
-# print(s/11454)
-# print(s2/nr)
 
 #varianta pentru calcularea validului
 cuv=["QUICK", "WALON", "JIDOV", "HARHSE", "FIXEZ", "IMPUT", "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
@@ -189,54 +99,6 @@ letters={}
 random.seed(42) # seed pentru a avea acelas cuvant random
 pozz=random.randrange(0,len(lines)) # o pozitie random intre 0 si len(lines)-1
 chosen="ACARI"
-
-# for word in cuv:
-# 	for i in range(5):
-# 		if word[i]==chosen[i]: #varianta cand caracterul apare pe aceeasi pozitie ca in chosen
-# 			valid[i]=2
-# 			final[i] = word[i]
-# 			if word[i] not in letters :  #Punem caracterul in letters
-# 				letters += word[i]
-# 		else:
-# 			for k in range(5):
-# 				if word[i]==chosen[k]: #varianta cand caracterul se afla in cuvanta si pe pozitia gresita
-# 					valid[i]=1
-# 					if word[i] not in letters : #punem caracterul in letters
-# 						letters += word[i]
-# 					break
-# 			else:
-# 				valid[i]=0 #varianta cand caracterul nu apare deloc in cuvant
-# 	print(valid) #testing in terminal
-# 	valid = [0] * 5 #resetam valid pentru a calcula trece prin urmatorul cuvant
-# print(f"letter choices are: {letters} ") #din ce litere este format cuvantul nostru
-# print(f"our first guess is : {final}") #final este cuvantul care il ghicim
-# print(f"the chosen word is : {chosen}") #testing in terminal (vedem care e cuvantul random)
-
-
-
-
-
-
-
-
-#verficam cuvintele posibile ramase
-
-# nr=0
-# for word in lines:
-# 	ok=1
-# 	for i in range(len(word)-1):
-# 		if word[i] not in letters:
-# 			ok=0
-# 		if final[i]!="":
-# 			if word[i]!=final[i]:
-# 				ok=0
-# 	for i in range(len(letters)):
-# 		if letters[i] not in word:
-# 			ok=0
-# 	if ok==1:
-# 		print(word)
-# 		nr+=1
-# print(nr)
 
 
 for word in cuv:
@@ -259,7 +121,14 @@ for word in cuv:
 					break
 			else:
 				valid[i]=0 #varianta cand caracterul nu apare deloc in cuvant
-	print(valid) #testing in terminal
+	for i in range(5):
+		if final[i]=="":
+			break
+	else:
+		final = "".join(final)
+		print(f"cuvantul este {final}")
+		sys.exit()
+# 	print(valid) #testing in terminal
 	valid = [0] * 5 #resetam valid pentru a calcula trece prin urmatorul cuvant
 
 for letter in letters:
@@ -303,8 +172,13 @@ while total_possibles != 0: #treem prin toate posibilitatile
 				word -= 1
 				break
 	total_possibles-=1
-	word +=1		
-		
+	word +=1
+	
+if len(possible) == 1:
+	print(f"cuvantul este {possible[0]}")
+	sys.exit()
+else:
+	pass #cream o functie care trece prin cuvintele posibile si le verifica cu chosen		
 	
 # print(max)
 print(len(possible))
