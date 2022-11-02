@@ -108,16 +108,14 @@ for word in cuv:
 			final[i] = word[i]
 			if word[i] not in letters :  #Punem caracterul in letters
 				letters[word[i]] = [0,1,2,3,4]
-			
-			letters[word[i]].pop(i)
+				letters[word[i]].remove(i)
 		else:
 			for k in range(5):
 				if word[i]==chosen[k]: #varianta cand caracterul se afla in cuvanta si pe pozitia gresita
 					valid[i]=1
 					if word[i] not in letters : #punem caracterul in letters
 						letters[word[i]] = [0,1,2,3,4]
-					if letters[word[i]][i] == i:
-						letters[word[i]].pop(i)
+						letters[word[i]].remove(i)
 					break
 			else:
 				valid[i]=0 #varianta cand caracterul nu apare deloc in cuvant
@@ -127,15 +125,12 @@ for word in cuv:
 	else:
 		final = "".join(final)
 		print(f"cuvantul este {final}")
-		sys.exit()
-# 	print(valid) #testing in terminal
-	valid = [0] * 5 #resetam valid pentru a calcula trece prin urmatorul cuvant
+		# sys.exit()
 
 for letter in letters:
 	for i in range(5):
 		if final[i] != "" and i in letters[letter]:
 			letters[letter].remove(i)
-	
 
 """I want to change possible word to be pushed when they are good"""
 #lista cu cuv posibile
@@ -171,20 +166,6 @@ for word in lines:
 		nr+=1 #verificam cate cuvinte sunt posibile de incercat
 		
 print(possible)		
-# total_possibles = len(possible)
-# word=0
-# while total_possibles != 0: #treem prin toate posibilitatile
-# 	for l in range(len(possible[word])): #pentru fiecare caracter din cuvant
-# 		if  final[l]== "":
-# 			for poz in letters[possible[word][l]]: #pentru fiecare caracter din letters	
-# 				if l == poz:
-# 					break
-# 			else:
-# 				possible.remove(possible[word])
-# 				word -= 1
-# 				break
-# 	total_possibles-=1
-# 	word +=1
 	
 if len(possible) == 1:
 	print(f"cuvantul este {possible[0]}")
