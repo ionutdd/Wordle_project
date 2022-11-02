@@ -105,7 +105,8 @@ for word in cuv:
 	for i in range(5):
 		if word[i]==chosen[i]: #varianta cand caracterul apare pe aceeasi pozitie ca in chosen
 			valid[i]=2
-			final[i] = word[i]
+			if final[i]=="":
+				final[i] = word[i]
 			if word[i] not in letters :  #Punem caracterul in letters
 				letters[word[i]] = [0,1,2,3,4]
 				letters[word[i]].remove(i)
