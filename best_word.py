@@ -98,24 +98,27 @@ letters={}
 # #random value for testing the algorithm
 random.seed(42) # seed pentru a avea acelas cuvant random
 pozz=random.randrange(0,len(lines)) # o pozitie random intre 0 si len(lines)-1
-chosen="TIPIS"
+chosen="CIUIN"
 
 
 for word in cuv:
 	for i in range(5):
 		if word[i]==chosen[i]: #varianta cand caracterul apare pe aceeasi pozitie ca in chosen
 			valid[i]=2
-			final[i] = word[i]
+			if final[i]=="":
+				final[i] = word[i]
 			if word[i] not in letters :  #Punem caracterul in letters
 				letters[word[i]] = [0,1,2,3,4]
 				letters[word[i]].remove(i)
+			
+			
 		else:
 			for k in range(5):
 				if word[i]==chosen[k]: #varianta cand caracterul se afla in cuvanta si pe pozitia gresita
 					valid[i]=1
 					if word[i] not in letters : #punem caracterul in letters
 						letters[word[i]] = [0,1,2,3,4]
-						letters[word[i]].remove(i)
+					letters[word[i]].remove(i)
 					break
 			else:
 				valid[i]=0 #varianta cand caracterul nu apare deloc in cuvant
@@ -125,9 +128,7 @@ for word in cuv:
 	else:
 		final = "".join(final)
 		print(f"cuvantul este {final}")
-		sys.exit()
-# 	print(valid) #testing in terminal
-	valid = [0] * 5 #resetam valid pentru a calcula trece prin urmatorul cuvant
+		# sys.exit()
 
 for letter in letters:
 	for i in range(5):
@@ -142,36 +143,30 @@ nr=0 #intializam o valoare pentru a calcula cate cuvinte exista posibile
 possible=[] #cuvintele din dictionar posibile formate cu caracterele din letters
 for word in lines:
 	ok=1
-	for i in range(len(word)-1):
-		if word[i] not in letters: #daca caracterul nu se afla in letters
-			ok=0
-		if final[i]!="": 
-			if word[i]!=final[i]: #daca caracterul e deja aparut in final
-				ok=0
 	for l in letters:  #daca caracterul nu se afla in letters
 		if l not in word: 
 			ok=0
+			break
+	if ok == 1:
+		for i in range(len(word)-1):
+			if word[i] not in letters: #daca caracterul nu se afla in letters
+				ok=0
+			elif final[i]!="": 
+				if word[i]!=final[i]: #daca caracterul e deja aparut in final
+					ok=0
+			else:
+				for poz in letters[word[i]]:
+					if i == poz:
+						break
+				else:
+					ok =0
+
+	
 	if ok==1:
+		
 		possible.append(word.strip("\n")) #pune cuvantele in lista fara \n
 
 		nr+=1 #verificam cate cuvinte sunt posibile de incercat
-print(final)
-print(letters)		
-print(possible)		
-total_possibles = len(possible)
-word=0
-while total_possibles != 0: #treem prin toate posibilitatile
-	for l in range(len(possible[word])): #pentru fiecare caracter din cuvant
-		if  final[l]== "":
-			for poz in letters[possible[word][l]]: #pentru fiecare caracter din letters	
-				if l == poz:
-					break
-			else:
-				possible.remove(possible[word])
-				word -= 1
-				break
-	total_possibles-=1
-	word +=1
 	
 if len(possible) == 1:
 	print(f"cuvantul este {possible[0]}")
