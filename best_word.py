@@ -118,7 +118,7 @@ for word in cuv:
 					valid[i]=1
 					if word[i] not in letters : #punem caracterul in letters
 						letters[word[i]] = [0,1,2,3,4]
-					letters[word[i]].remove(i)
+						letters[word[i]].remove(i)
 					break
 			else:
 				valid[i]=0 #varianta cand caracterul nu apare deloc in cuvant
