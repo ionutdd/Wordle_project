@@ -90,7 +90,7 @@ with open('cuvinte_wordle.txt') as f:
 		
 
 #varianta pentru calcularea validului
-cuv=["QUICK", "WALON", "JIDOV", "HARHSE", "FIXEZ", "IMPUT", "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
+cuv=["QUICK", "WALON", "JIDOV", "HARSE", "FIXEZ", "IMPUT", "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
 valid = [0] * 5
 final = ["","","","",""]
 letters={}
@@ -98,7 +98,7 @@ letters={}
 # #random value for testing the algorithm
 random.seed(42) # seed pentru a avea acelas cuvant random
 pozz=random.randrange(0,len(lines)) # o pozitie random intre 0 si len(lines)-1
-chosen="ACARI"
+chosen="TIPIS"
 
 
 for word in cuv:
@@ -108,16 +108,14 @@ for word in cuv:
 			final[i] = word[i]
 			if word[i] not in letters :  #Punem caracterul in letters
 				letters[word[i]] = [0,1,2,3,4]
-			
-			letters[word[i]].pop(i)
+				letters[word[i]].remove(i)
 		else:
 			for k in range(5):
 				if word[i]==chosen[k]: #varianta cand caracterul se afla in cuvanta si pe pozitia gresita
 					valid[i]=1
 					if word[i] not in letters : #punem caracterul in letters
 						letters[word[i]] = [0,1,2,3,4]
-					if letters[word[i]][i] == i:
-						letters[word[i]].pop(i)
+						letters[word[i]].remove(i)
 					break
 			else:
 				valid[i]=0 #varianta cand caracterul nu apare deloc in cuvant
@@ -134,7 +132,7 @@ for word in cuv:
 for letter in letters:
 	for i in range(5):
 		if final[i] != "" and i in letters[letter]:
-			letters[letter].pop(i)
+			letters[letter].remove(i)
 	
 
 #lista cu cuv posibile
@@ -157,8 +155,9 @@ for word in lines:
 		possible.append(word.strip("\n")) #pune cuvantele in lista fara \n
 
 		nr+=1 #verificam cate cuvinte sunt posibile de incercat
-		
-		
+print(final)
+print(letters)		
+print(possible)		
 total_possibles = len(possible)
 word=0
 while total_possibles != 0: #treem prin toate posibilitatile
