@@ -7,7 +7,7 @@ max = 0
 errors = 0
 gresit = []
 fr=[0]*25
-cuv=["QUICK", "WALON", "JIDOV", "HARSI", "FIXEZ", "IMPUT", "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
+cuv=["IMPUT", "WALON", "FIXEZ", "HARSI" , "QUICK" , "JIDOV" , "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
 for chosen in lines:
     contor=0
     valid = [0] * 5
@@ -15,6 +15,7 @@ for chosen in lines:
     letters={}
     fixed=0
     done=0
+    kk=0
     # #random value for testing the algorithm
     # random.seed(42) # seed pentru a avea acelas cuvant random
     # pozz=random.randrange(0,len(lines)) # o pozitie random intre 0 si len(lines)-1
@@ -22,6 +23,8 @@ for chosen in lines:
     print(f"the chosen word is : {chosen}")
 
     for word in cuv:
+        if kk==5:
+            break
         contor+=1
         fixed=contor
         for i in range(5):
@@ -35,6 +38,7 @@ for chosen in lines:
                 if final[i]=="":
                     final[i] = word[i]
                 if word[i] not in letters :  #Punem caracterul in letters
+                    kk+=1
                     letters[word[i]] = [0,1,2,3,4]
                     letters[word[i]].remove(i)
             else:
@@ -42,6 +46,7 @@ for chosen in lines:
                     if word[i]==chosen[k]: #varianta cand caracterul se afla in cuvanta si pe pozitia gresita
                         valid[i]=1
                         if word[i] not in letters : #punem caracterul in letters
+                            kk+=1
                             letters[word[i]] = [0,1,2,3,4]
                             letters[word[i]].remove(i)
                         break
@@ -100,9 +105,6 @@ for chosen in lines:
         contor=done
     sum+=contor
     fr[contor]+=1
-
-
-
 
 print(sum/11454)
 print(max)
