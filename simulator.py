@@ -6,9 +6,11 @@ sum = 0
 max = 0
 errors = 0
 gresit = []
+fr=[0]*16
 
-cuv=["QUICK", "WALON", "JIDOV", "HARHSE", "FIXEZ", "IMPUT", "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
+cuv=["QUICK", "WALON", "JIDOV", "HARSE", "FIXEZ", "IMPUT", "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
 for chosen in lines:
+    contor=0
     valid = [0] * 5
     final = ["","","","",""]
     letters={}
@@ -20,6 +22,7 @@ for chosen in lines:
     print(f"the chosen word is : {chosen}")
 
     for word in cuv:
+        contor+=1
         for i in range(5):
             if word[i]==chosen[i]: #varianta cand caracterul apare pe aceeasi pozitie ca in chosen
                 valid[i]=2
@@ -81,33 +84,23 @@ for chosen in lines:
 
             nr+=1 #verificam cate cuvinte sunt posibile de incercat
 
-    print(len(possible))
-    if len(possible) == 0:
-        errors+=1	
-    sum+=len(possible)
+    print(len(possible))	
     if len(possible) > max:
         max = len(possible)
 
-    # # print(max)
-    # print(len(possible))
-    # print(possible)
+    for suspect in possible:
+        contor+=1
+        if suspect==chosen:
+            break
+    sum+=contor
+    fr[contor]+=1
+
+
+
+
 print(sum/11454)
 print(max)
+print()
 
-print(f"numarul de cuvinte gresite este:{errors}")
-
-# failed words : ['BIBIC', 'BIBIL', 'BIFID', 'BIGII', 'BINIS', 'BIRIS', 'BITII', 'CILII', 'CINIC', 'CIPIC', 'CIRII', 'CIRIP', 'CIRIS', 'CITII', 'CITIM', 'CITIT',
-#                 'CIUIN', 'CIVIC', 'CIVIL', 'CIVIT', 'DIGIT', 'DILIA', 'DILIE', 'DILII', 'DILIM', 'DILIT', 'DILIU', 'DIMIA', 'DIMIE', 'DIMII', 'DIOIC', 'DIRIG',
-#                 'DIVID', 'DIVIN', 'DIXIE', 'FILIT', 'FINII', 'FINIM', 'FINIS', 'FINIT', 'FIRII', 'FIRIZ', 'FISIC', 'FISIU', 'FITIL', 'FIZIC', 'GIMIA', 'GIMIE', 
-#                 'GIMII', 'GINII', 'GINIM', 'GINIT', 'HIOID', 'HIPIC', 'HITIT', 'JIBII', 'JILIP', 'JIPII', 'JITIA', 'JITIE', 'JITII', 'KAZOO', 'KIPII', 'LICIT', 
-#                 'LIDIC', 'LIGII', 'LIMIN', 'LINIA', 'LINIE', 'LINII', 'LINIO', 'LIPIA', 'LIPIE', 'LIPII', 'LIPIM', 'LIPIT', 'LIRIC', 'LISII', 'LITIA', 'LITIC', 
-#                 'LITIE', 'LITII', 'LITIU', 'LIVID', 'MICII', 'MICIM', 'MICIT', 'MIDIA', 'MIDIE', 'MIDII', 'MIEII', 'MIJII', 'MIJIM', 'MIJIT', 'MIMIC', 'MIMII', 
-#                 'MINIA', 'MINIE', 'MINIM', 'MINIU', 'MIRIA', 'MIRIE', 'MIRII', 'MISIA', 'MISIE', 'MISII', 'MISIL', 'MISIR', 'MISIT', 'MITIC', 'MITII', 'MITIM', 
-#                 'MITIT', 'MIXIA', 'MIXIE', 'MIXII', 'MIZID', 'NICIO', 'NIMIC', 'NISIP', 'NITII', 'NIXIS', 'OIDIA', 'OIDIE', 'OIDII', 'PICII', 'PIEII', 'PILII', 
-#                 'PILIM', 'PILIT', 'PINII', 'PIPIT', 'PISIC', 'PITIC', 'PITIG', 'PITII', 'PITIM', 'PITIS', 'PITIT', 'PIUIA', 'PIUIE', 'PIUIT', 'PIUUU', 'REMUU', 
-#                 'RICIN', 'RIDIC', 'RIFII', 'RIGID', 'RIGII', 'RITIN', 'RIZIC', 'RIZIL', 'SIBIR', 'SICII', 'SIGIL', 'SILII', 'SILIM', 'SILIT', 'SIMIT', 'SINIA', 
-#                 'SINIE', 'SINII', 'SIPII', 'SIRIC', 'SIVII', 'TIBIA', 'TIBII', 'TIFIC', 'TIMIA', 'TIMID', 'TIMIE', 'TIMII', 'TIMIN', 'TIMIR', 'TIPIA', 'TIPIC', 
-#                 'TIPIE', 'TIPII', 'TIPIM', 'TIPIS', 'TIPIT', 'TISII', 'TIUIA', 'TIUIE', 'TIUII', 'TIUIM', 'TIUIT', 'TIVIC', 'TIVII', 'TIVIL', 'TIVIM', 'TIVIT', 
-#                 'TIZIC', 'TIZII', 'UICII', 'UIMII', 'UIMIM', 'UIMIT', 'UIRII', 'UITIT', 'UIUIU', 'VACUU', 'VICIA', 'VICIE', 'VICII', 'VICIU', 'VIGIA', 'VIGIE', 
-#                 'VIGII', 'VIGIL', 'VILII', 'VILIT', 'VINIA', 'VINIE', 'VINII', 'VINIL', 'VINIU', 'VIOII', 'VIPIA', 'VIPIE', 'VIPII', 'VIRID', 'VIRIL', 'VISIN', 
-#                 'VITII', 'VITIU', 'VIZII', 'VIZIR', 'WIDIA', 'WIDII', 'XIFIA', 'XIFIE', 'XIFII', 'XILIT', 'ZIDII', 'ZIDIM', 'ZIDIT', 'ZISII']
+for i in range(len(fr)):
+    print(f"Cuvinte gasite din {i} incercari: {fr[i]}")
