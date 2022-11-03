@@ -6,15 +6,15 @@ sum = 0
 max = 0
 errors = 0
 gresit = []
-fr=[0]*16
-
-cuv=["QUICK", "WALON", "JIDOV", "HARSE", "FIXEZ", "IMPUT", "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
+fr=[0]*25
+cuv=["QUICK", "WALON", "JIDOV", "HARSI", "FIXEZ", "IMPUT", "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
 for chosen in lines:
     contor=0
     valid = [0] * 5
     final = ["","","","",""]
     letters={}
-
+    fixed=0
+    done=0
     # #random value for testing the algorithm
     # random.seed(42) # seed pentru a avea acelas cuvant random
     # pozz=random.randrange(0,len(lines)) # o pozitie random intre 0 si len(lines)-1
@@ -23,6 +23,12 @@ for chosen in lines:
 
     for word in cuv:
         contor+=1
+        fixed=contor
+        for i in range(5):
+            if word[i]!=chosen[i]:
+                fixed=0
+        if fixed==contor:
+            done=contor
         for i in range(5):
             if word[i]==chosen[i]: #varianta cand caracterul apare pe aceeasi pozitie ca in chosen
                 valid[i]=2
@@ -82,16 +88,16 @@ for chosen in lines:
             
             possible.append(word.strip("\n")) #pune cuvantele in lista fara \n
 
-            nr+=1 #verificam cate cuvinte sunt posibile de incercat
-
-    print(len(possible))	
+            nr+=1 #verificam cate cuvinte sunt posibile de incercat 
+    print(len(possible))
     if len(possible) > max:
         max = len(possible)
-
     for suspect in possible:
         contor+=1
         if suspect==chosen:
             break
+    if done!=0:
+        contor=done
     sum+=contor
     fr[contor]+=1
 
@@ -102,5 +108,5 @@ print(sum/11454)
 print(max)
 print()
 
-for i in range(len(fr)):
+for i in range(1,len(fr)):
     print(f"Cuvinte gasite din {i} incercari: {fr[i]}")
