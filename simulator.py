@@ -7,7 +7,8 @@ max = 0
 errors = 0
 gresit = []
 fr=[0]*25
-cuv=["IMPUT", "WALON", "FIXEZ", "HARSI" , "QUICK" , "JIDOV" , "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
+quick=""
+cuv=["IMPUT", "WALON", "HARSI", "FIXEZ" , "JIDOV" , "QUICK" , "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
 for chosen in lines:
     contor=0
     valid = [0] * 5
@@ -95,16 +96,19 @@ for chosen in lines:
 
             nr+=1 #verificam cate cuvinte sunt posibile de incercat 
     print(len(possible))
-    if len(possible) > max:
-        max = len(possible)
-    for suspect in possible:
+    for j in range(len(possible)-1,-1,-1):
         contor+=1
-        if suspect==chosen:
+        if possible[j].strip("\n")==chosen.strip("\n"):
             break
     if done!=0:
         contor=done
     sum+=contor
     fr[contor]+=1
+    if contor>max:
+        max=contor
+    if contor==max:
+        quick=""
+        quick+=chosen.strip("\n")+" "
 
 print(sum/11454)
 print(max)
@@ -112,3 +116,5 @@ print()
 
 for i in range(1,len(fr)):
     print(f"Cuvinte gasite din {i} incercari: {fr[i]}")
+
+print(quick)
