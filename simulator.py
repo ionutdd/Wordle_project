@@ -7,9 +7,9 @@ max = 0
 errors = 0
 gresit = []
 fr=[0]*25
-quick=""
-cuv=["IMPUT", "WALON", "HARSI", "FIXEZ" , "JIDOV" , "QUICK" , "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
+cuv=["IMPUT", "HARSI", "WALON" , "FIXEZ" , "JIDOV" , "QUICK" , "RUGBY"] #cele 7 cuvinte care trec prin tot alfabetul
 for chosen in lines:
+    route=chosen.strip('\n')+","
     contor=0
     valid = [0] * 5
     final = ["","","","",""]
@@ -21,7 +21,6 @@ for chosen in lines:
     # random.seed(42) # seed pentru a avea acelas cuvant random
     # pozz=random.randrange(0,len(lines)) # o pozitie random intre 0 si len(lines)-1
     # chosen="ACARI"
-    print(f"the chosen word is : {chosen}")
 
     for word in cuv:
         if kk==5:
@@ -33,6 +32,9 @@ for chosen in lines:
                 fixed=0
         if fixed==contor:
             done=contor
+            route+=word
+        else:
+            route+=word+","
         for i in range(5):
             if word[i]==chosen[i]: #varianta cand caracterul apare pe aceeasi pozitie ca in chosen
                 valid[i]=2
@@ -58,7 +60,6 @@ for chosen in lines:
                 break
         else:
             final = "".join(final)
-            print(f"cuvantul este {final}")
             # sys.exit()
             
         for letter in letters:
@@ -95,26 +96,21 @@ for chosen in lines:
             possible.append(word.strip("\n")) #pune cuvantele in lista fara \n
 
             nr+=1 #verificam cate cuvinte sunt posibile de incercat 
-    print(len(possible))
-    for j in range(len(possible)-1,-1,-1):
-        contor+=1
-        if possible[j].strip("\n")==chosen.strip("\n"):
-            break
+    if done==0:
+        for j in range(len(possible)-1,-1,-1):
+            contor+=1
+            if possible[j].strip("\n")==chosen.strip("\n"):
+                route+=possible[j]
+            else:
+                route+=possible[j]+","
+            if possible[j].strip("\n")==chosen.strip("\n"):
+                break
     if done!=0:
         contor=done
     sum+=contor
     fr[contor]+=1
     if contor>max:
         max=contor
-    if contor==max:
-        quick=""
-        quick+=chosen.strip("\n")+" "
+    print(route)
 
-print(sum/11454)
-print(max)
-print()
-
-for i in range(1,len(fr)):
-    print(f"Cuvinte gasite din {i} incercari: {fr[i]}")
-
-print(quick)
+print(sum/len(lines))
