@@ -5,6 +5,8 @@ while n!="0" and n!="1":
     n=input("n= ")
 n=int(n)
 if n==1:
-    __import__('FIRST_PART.py')
+    try:__import__('FIRST_PART.py')
+    except:print("Multumim de vizionare!")
 else:
-    __import__('SECOND_PART.py')
+    try:__import__('SECOND_PART.py')
+    except:print("Multumim de vizionare!")
