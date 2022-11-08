@@ -26,7 +26,7 @@ for chosen in lines:
     done=0
     kk=0
 
-    print(chosen)
+    # print(chosen)
     # print("Cuvintele prin care a ajuns la cuvantul ales sunt:") ###########
     for word in cuv:
         if kk==5:
@@ -76,7 +76,7 @@ for chosen in lines:
         
     #lista cu caracterele posibile
     nr = 0
-    for word in reversed(lines):
+    for word in lines:
         ok=1
         for l in letters:  #daca caracterul nu se afla in letters
             if l not in word: 
@@ -102,7 +102,7 @@ for chosen in lines:
         if ok == 1:
             word = word.strip("\n")
             route+=word+","
-            contor+=1 #testam de cate ori e average
+            contor+=1 #adaugam la contor cand il testam cu chosen
 
             #############################
             #trying WORD with the chosen
@@ -122,6 +122,11 @@ for chosen in lines:
                     else:
                         valid[i]=0 #varianta cand caracterul nu apare deloc in cuvant
 
+            for letter in letters:
+                for i in range(5):
+                    if final[i] != "" and i in letters[letter]:
+                        letters[letter].remove(i)
+
             ############################
             #verificam daca este cuvantul final
             ############################
@@ -132,8 +137,10 @@ for chosen in lines:
                 final = "".join(final)
                 total-=1
                 # sys.exit()
+    if done!=0:
+        contor=done
     print(route)
-    print(f"Incercari: {contor}")
+    # print(f"Incercari: {contor}")
     sum+=contor
     fr[contor]+=1
 
